@@ -1,0 +1,93 @@
+<div class='jumbotron j'>
+	<div class='container'>
+		<div class="row tutors">
+				<form method="POST" action="/tutors/register" class="form-group">
+				  <div class="form-group">
+				    <label for="username">Username</label>
+					<input type="text" name="username" value=""  class="form-control" required>
+				  </div>
+				  {{#if user}}
+			        <div class="alert alert-danger" role="alert">
+					  Tutorname already exists!
+					</div>
+				  {{/if}}
+				  
+				  <div class="form-group">
+				    <label for="age">Age</label> 
+					<input type="number" min="12" name="age" value="" class="form-control" required>
+				  </div>
+
+				 <div class="form-group">
+				  <label for="gender">Gender</label>
+		            <select class="custom-select form-control" id="inputGroupSelect01" name="gender" required>
+		            <option value="Female">Female</option>
+		              <option value="Male">Male</option>
+		              <option value="Undefined">Prefer not to say</option>
+		            </select>
+				  </div>
+				  <div class="form-group">
+				    <label for="occupation">Occupation</label> 
+					<input type="text" name="occupation" value="" class="form-control" required>
+				  </div>
+
+				  <div class="form-group">
+				    <label for="subject">I will use Ustad to teach</label> 
+		            <select class="custom-select form-control" name="subject" required>
+		              <option selected>Mathematics</option>
+		              <option value="Computer Science">Computer Science</option>
+		              <option value="Biology">Biology</option>
+		              <option value="Chemistry">Chemistry</option>
+		              <option value="History">History</option>
+		              <option value="Music">Music</option>
+		              <option value="Business & Economics">Business & Economics</option>
+		              <option value="Graphic Design">Graphic Design</option>
+		              <option value="English Language">English Language</option>
+		              <option value="Admission Tests">Admission Tests</option>
+		            </select>
+				  </div>
+				  <div class="form-group">
+				    <label for="level">I can tutor students at</label> 
+		            <select class="custom-select form-control" name="level" required>
+		              <option selected>High School</option>
+		              <option value="Primary">Primary School</option>
+		              <option value="Middle">Middle School</option>
+		              <option value="High">High School</option>
+		             <option value="University">University</option>
+		             <option value="Graduate">Graduate Level</option>
+		            </select>
+				  </div>
+				  <label for="price">I will charge</label>
+				  <div class="input-group">
+					  <input type="number" min="0" name="price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required>
+					  <div class="input-group-append">
+					    <span class="input-group-text">Rupee</span>
+					    <span class="input-group-text">Per Hour</span>
+					  </div>
+					</div>
+
+				  <div class="form-group">
+				    <label for="email">Email</label>
+					<input type="email" name="email" value="" class="form-control" required>
+				  </div>
+				  {{#if mail}}
+			        <div class="alert alert-danger" role="alert">
+					  Email already registered!
+					</div>
+				  {{/if}}
+				  <div class="form-group">
+				    <label for="password">Password</label>
+					<input type="password" name="password" value=""
+					pattern="(?=.*\d)(?=.*[\W_]).{8,}" 
+					aria-describedby="passwordRules" class="form-control" required>
+					<small id="passwordRules" class="form-text text-muted">Minimum 8 characters. Must include at least one digit and special character.</small>
+				  </div>
+				  <div class="form-group">
+				    <label for="bio">Quick Introductory Note</label>
+				    <textarea class="form-control" name="bio" rows="3" aria-describedby="intro"></textarea>
+				    <small id="passwordRules" class="form-text text-muted">A quick intro about yourself or other notes (This will show up in your profile)</small>
+				  </div>
+				  <button type="submit" class="btn btn-primary">Register as Tutor</button>
+				</form>
+		</div>
+	</div>
+</div>

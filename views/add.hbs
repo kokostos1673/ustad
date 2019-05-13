@@ -1,0 +1,47 @@
+<div class='jumbotron'>
+	<div class='container'>
+		<div class="row">
+			<div class="col-sm-6 offset-sm-3">
+				<form method="POST" action="/lessons/add" class="form-group">
+				  <div class="form-group">
+				    <label for="Lessonname">Class Name:</label>
+					<input type="text" name="Lessonname" value="" class="form-control" required>
+				  </div>
+				  <div class="form-group">
+				    <label for="capacity">Capacity:</label>
+					<input type="number" min="1" name="capacity" value="" class="form-control" aria-describedby="limitExplained" required>
+					<small id="limitExplained" class="form-text text-muted">Maximum capacity of the tutorial</small>
+				  </div>
+				  <div class="form-group">
+				    <label for="subject">Subject Category:</label> 
+		            <select class="custom-select form-control" name="subject" required>
+		              <option selected>Mathematics</option>
+		              <option value="Computer Science">Computer Science</option>
+		              <option value="Biology">Biology</option>
+		              <option value="Chemistry">Chemistry</option>
+		              <option value="History">History</option>
+		              <option value="Music">Music</option>
+		              <option value="Business & Economics">Business & Economics</option>
+		              <option value="Graphic Design">Graphic Design</option>
+		              <option value="English Language">English Language</option>
+		              <option value="Admission Tests">Admission Tests</option>
+		            </select>
+				  </div>
+				  <div class="form-group">
+					<label for="time">Time:</label> 
+					<input type="datetime-local" name="time" value="" class="form-control">
+				  </div>
+				  <div class="form-group">
+					<label for="duration">Duration(hours):</label> 
+					<input type="number" min="1" name="duration" value="" class="form-control">
+				  </div>
+				  <div class="form-group">
+					<label for="price">Price(per hour):</label> 
+					<input type="number" min="0" name="price" value="" class="form-control">
+				</div>
+				  <button type="submit" class="btn btn-primary" style="margin-top:5px;">Publish</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

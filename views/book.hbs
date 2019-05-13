@@ -1,0 +1,73 @@
+
+<p>
+ <button class="btn btn-primary chatbot" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Ustad Chatbot
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body messagecard">
+ <div class='container c'>
+					<h3 class="history"><b>Messages</b></h3>
+					<hr>
+					<div class="grid g">
+						<div class="row">
+							<div class="alert alert-info m1" role="alert">
+								{{ tutor.bio }}
+							</div>
+						</div>
+						<div class="row">
+						{{#if message}}
+							<div class="alert alert-success m2" role="alert">
+								{{ message }}
+							</div> 
+	                	{{/if}}
+	                	</div>
+                	</div>
+
+                	<form method="POST" action="/book/{{tutor._doc._id}}">
+                	<div class="input-group mb-3">
+					  <input type="text" class="form-control" placeholder="Type your message to the tutor here" aria-label="Recipient's username" name="message" aria-describedby="button-addon2">
+					  <div class="input-group-append">
+					    <button class="btn btn-primary" type="submit" id="button-addon2">Send</button>
+					  </div>
+					</div>
+					</form>
+
+				</div>
+  </div>
+</div>
+<div class='jumbotron h down'>
+	<div class="row">	
+		<div class='container c'>
+		<form method="POST" action="/lessons/add/{{tutor._doc.username}}" class="form-group">
+				  <div class="form-group">
+				    <label for="tutor">Tutor</label>
+					<input type="text" name="tutor" value="{{tutor.username}}" class="form-control" readonly>
+				  </div>
+				  <div class="form-group">
+				    <label for="student">Student</label>
+					<input type="text" name="student" value="{{student.username}}" class="form-control" readonly>
+				  </div>
+
+				 <div class="form-group">
+					<label for="time">Date & Time</label> 
+					<input type="datetime-local" name="time" value="" class="form-control" required>
+				  </div>
+				  <div class="form-group">
+					<label for="duration">Duration(hours)</label> 
+					<input type="number" min="1" name="duration" value="" class="form-control" required>
+				  </div>
+				  <div class="form-group">
+					<label for="price">Price (per hour)</label> 
+					<input type="number" min="0" name="price" class="form-control" placeholder="{{tutor.price}}" required>
+				</div>
+
+				   <button type="submit" class="btn btn-primary" style="margin-top:5px;">Book the Session</button>
+				</form>
+					
+
+		</div>	
+	</div>
+</div>
+
+

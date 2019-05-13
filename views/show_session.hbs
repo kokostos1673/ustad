@@ -1,0 +1,76 @@
+<div class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				
+				<div class="container">
+					<button type="button" class="btn btn-primary calls">Start ☎️</button>
+					<div class="spinner-grow text-danger sp" role="status">
+					  <span class="sr-only">Loading...</span>
+					</div>
+					<button type="button" class="btn btn-danger calle" data-toggle="modal" data-target="#exampleModal">
+  End 📞
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Rate {{lesson.tutor_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <span>How was your experience with {{lesson.tutor_name}}?</span>
+      <br>
+      <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Excellent - 5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Average - 3 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Below average - 2 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Terrible - 1 star"></label>
+</fieldset>
+<br>
+	<div class="fl">
+	Any particular feedback on {{lesson.tutor_name}}? (This review will be public to all users)
+     <br>
+     <textarea rows="3" class='txt'></textarea>
+     </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form method="GET" action="/">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+					<video autoplay="true" id="videoElement">
+					</video>
+
+				</div>
+			</div>
+			<div class="col-md-4 notes">
+			<p>
+		  <button class="btn btn-primary takenotes" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+		    Take Notes
+		  </button>
+		</p>
+		<div class="collapse" id="collapseExample">
+		  <div class="card card-body">
+		  <textarea rows="12"></textarea>
+		    <a href="/notes/MyNotes.pdf" download>
+			  <button type='button' class='btn btn-info download'>Download Notes</button>
+			</a>
+		  </div>
+</div>
+			
+			</div>
+		</div>
+	</div>
+
+</div>

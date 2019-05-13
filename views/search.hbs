@@ -1,0 +1,162 @@
+
+<div class='jumbotron f'>
+	<div class='container'>
+		<div class="row filters">
+
+		<form method="POST" action="/search">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+
+    <select class="custom-select form-control" name="subject">
+      <option selected>All Subjects</option>
+      <option value="Mathematics">Mathematics</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Biology">Biology</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="History">History</option>
+      <option value="Music">Music</option>
+      <option value="Business & Economics">Business & Economics</option>
+      <option value="Graphic Design">Graphic Design</option>
+      <option value="English Language">English Language</option>
+      <option value="Admission Tests">Admission Tests</option>
+    </select>
+				  
+    </div>
+    <div class="col-auto">
+
+    <select class="custom-select form-control" name="level">
+      <option selected>All Levels</option>
+      <option value="Primary">Primary School</option>
+	  <option value="Middle">Middle School</option>
+	  <option value="High">High School</option>
+	 <option value="University">University</option>
+	 <option value="Graduate">Graduate Level</option>
+	</select>
+				  
+    </div>
+        <div class="col-auto">
+        <select class="custom-select form-control" name="rating">
+      <option selected>Any Rating</option>
+            <option value="0">
+        Unrated
+    </option>
+      <option value="1">
+        ⭐
+	  </option>
+	  <option value="2">⭐⭐</option>
+	  <option value="3">⭐⭐⭐</option>
+	 <option value="4">⭐⭐⭐⭐</option>
+	 <option value="5">⭐⭐⭐⭐⭐</option>
+	</select>
+    </div>
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+  </div>
+</form>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+  <div class="row text-center">
+    {{#each tutors as |tutor|}}
+      <div class="card cont" style="width: 14rem; height:28rem;">
+        <img src="/images/{{tutor._doc.gender}}.png" class="card-img-top" alt="tutor gender">
+        <div class="card-body">
+          <h5 class="card-title">{{tutor._doc.username}}</h5>
+          <p class="card-text">
+          {{#if tutor.zero}}
+          <span>☆☆☆☆☆</span>
+          {{/if}}
+          {{#if tutor.one}}
+          <span>⭐☆☆☆☆</span>
+          {{/if}}
+          {{#if tutor.two}}
+          <span>⭐⭐☆☆☆</span>
+          {{/if}}
+          {{#if tutor.three}}
+          <span>⭐⭐⭐☆☆</span>
+          {{/if}}
+          {{#if tutor.four}}
+          <span>⭐⭐⭐⭐☆</span>
+          {{/if}}
+          {{#if tutor.five}}
+          <span>⭐⭐⭐⭐⭐</span>
+          {{/if}}
+          <br>
+          <span>🏫 {{tutor._doc.occupation}}</span>
+          <br>
+          <span>💲 {{tutor._doc.price}} per hour</span>
+          </p>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{tutor.name}}">
+            Learn More
+          </button>
+          <div class="modal fade" id="{{tutor.name}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title sentr" id="exampleModalLabel">{{tutor._doc.username}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <p>
+                <span><b>Rating: </b></span>
+                 {{#if tutor.zero}}
+                <span>☆☆☆☆☆</span>
+                {{/if}}
+                {{#if tutor.one}}
+                <span>⭐☆☆☆☆</span>
+                {{/if}}
+                {{#if tutor.two}}
+                <span>⭐⭐☆☆☆</span>
+                {{/if}}
+                {{#if tutor.three}}
+                <span>⭐⭐⭐☆☆</span>
+                {{/if}}
+                {{#if tutor.four}}
+                <span>⭐⭐⭐⭐☆</span>
+                {{/if}}
+                {{#if tutor.five}}
+                <span>⭐⭐⭐⭐⭐</span>
+                {{/if}}
+                <br>
+                <span>🏫 <b>Occupation:</b> {{tutor._doc.occupation}}</span>
+                <br>
+                <span>💲 <b>Charges:</b> {{tutor._doc.price}} per hour</span>
+                <br>
+                <span>🧑 <b>Gender:</b> {{tutor._doc.gender}} , <b>Age:</b> {{tutor._doc.age}}</span>
+                </p>
+                <hr>
+                <p>
+                <span>📝 <b>An Intro Note from Tutor: </b></span>
+                <br> 
+                <i>{{tutor._doc.bio}}</i>
+                </p>
+                <hr>
+                <span>👍👎 <b>Reviews</b></span>
+                <p>
+                {{#each tutor._doc.reviews as |review|}}
+                <i>{{review}}</i>
+                <br>
+                {{/each}}
+                </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <form method="GET" action="/book/{{tutor._doc._id}}">
+                  <button type="submit" class="btn btn-primary">Schedule a Session</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>

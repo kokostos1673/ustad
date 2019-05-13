@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Enrollment Status</h2>
+   {{#if lessonLimit}}
+          <div class="alert alert-danger" role="alert">
+            You already signed up for this class or it is already full! 
+          </div>
+        {{/if}}
+  {{#if lowWallet}}
+    <div class="alert alert-danger" role="alert">
+      You do not have enough wallet balance to enroll in the class! 
+      </div>
+      {{/if}}
+  {{#if success}}
+    <div class="alert alert-success" role="alert">
+      Congratulations! You are enrolled in the class! 
+      </div>
+       {{/if}}
+<form method='GET' action='/students/profile'>  
+  <button type="submit" class="btn btn-primary">Go To Your Classes Page</button>
+</form>
+</div>

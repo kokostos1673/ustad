@@ -1,0 +1,26 @@
+<div class="container tutcont">
+<h2 class="tuttext">Your Tutorial Sessions</h2>
+<hr>
+  <div class="row text-center">
+
+    {{#each lessons as |lesson|}}
+      <div class="card tutorial" style="width: 14rem; height:26rem;">
+        <img src="/images/tutorial.png" class="card-img-top" >
+        <div class="card-body">
+          <h5 class="card-title">{{lesson.tutor_name}}</h5>
+          <p class="card-text">
+          <span>⏰ <b>Scheduled Time: </b>{{lesson.time}}</span>
+          <br>
+          <span>⌛ <b>Duration: </b>{{lesson.duration}} hours</span>
+          <br>
+          <span>💲 <b>Price:</b> {{lesson.price}} per hour</span>
+          </p>
+          <form method="POST" action="/lessons/show/{{lesson._id}}">
+          <button type="submit" class="btn btn-primary" style="margin-top:5px;">Go to the Session</button>
+          </form>
+
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
